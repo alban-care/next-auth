@@ -145,3 +145,23 @@ Get the list of the providers :
 
 - Method : GET
 - URL : http://localhost:3000/api/auth/providers
+
+## Add middleware
+
+[docs](https://next-auth.js.org/configuration/nextjs#middleware)
+
+### When you want to require authentication for your entire site :
+
+```bash
+$ touch ./app/middleware.ts
+$ echo 'export { default } from "next-auth/middleware";' >> ./app/middleware.ts
+```
+
+### If you only want to secure certain pages :
+
+```ts
+// ./app/middleware.ts
+// (...)
+
+export const config = { matcher: ["/dashboard", "/admin"] };
+```
